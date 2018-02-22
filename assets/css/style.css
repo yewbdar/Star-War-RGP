@@ -67,3 +67,6 @@ p,div{
      background: #e0818a}
 #reset:active {
      background: #8c242e; }
+     audio{
+         display:none;
+     }

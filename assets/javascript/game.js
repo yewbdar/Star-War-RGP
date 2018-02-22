@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#reset').hide();
-   // var audio=document.createElement('audio')
+    // var audio=document.createElement('audio')
 
     var game = {
         selectedCharacter: false,
@@ -14,13 +14,15 @@ $(document).ready(function () {
         defnderHp: 0,
         displayAttackerValue: 0,
         displayDefenderValue: 0,
-        nameOfDefender:null,
-        nameOfAttacker:null,
-        
-          
+        nameOfDefender: null,
+        nameOfAttacker: null,
+        defnderCount: 3,
+
+
         attack: function () {
             var audio = $("#audio")[0];
             audio.play();
+            
             if (this.attackerHp > 0 && this.defnderHp > 0) {
 
                 this.attackerHp = this.attackerHp - this.defendingPower;
@@ -32,6 +34,7 @@ $(document).ready(function () {
                 }
                 this.defnderHp = this.defnderHp - this.attackingPower;
                 if (this.defnderHp <= 0 && this.attackerHp > 0) {
+                    this.defnderCount--;
                     $("#info").show();
                     $("#info").html("You win ............select another defender    !!!");
                     $("#info").css({ "background-color": "#7fa4e0", "width": "40%" });
@@ -41,8 +44,8 @@ $(document).ready(function () {
                 $('#' + this.displayAttackerValue).html(this.attackerHp);
                 $('#' + this.displayDefenderValue).html(this.defnderHp);
                 this.attackingPower = this.attackingPower + 5;
-                $("#attacker-info").html("You attacked "+" "+this.nameOfDefender + " " +"for "+this.attackingPower+" damage.");
-                $("#defnder-info").html(this.nameOfDefender + " attacked you back for " + this.defendingPower+" damage.");
+                $("#attacker-info").html("You attacked " + " " + this.nameOfDefender + " " + "for " + this.attackingPower + " damage.");
+                $("#defnder-info").html(this.nameOfDefender + " attacked you back for " + this.defendingPower + " damage.");
 
             }
         },
@@ -57,8 +60,8 @@ $(document).ready(function () {
             game.attackerId = $(this).attr('id');
             $('#' + game.attackerId).insertAfter('.your-character');
             game.displayAttackerValue = $(this).find('p').attr('id');
-            game.nameOfAttacker=$(this).find('h5').html();
-           
+            game.nameOfAttacker = $(this).find('h5').html();
+
             $('.img-holder').css("background-color", "#8c242e");
             $('#' + game.attackerId).css({ "background-color": "#7fa4e0", "border": "3px solid green" });
             game.attackerSelected = true;
@@ -66,13 +69,13 @@ $(document).ready(function () {
             game.attackingPower = (Math.floor(Math.random() * ((40 - 5) + 1) + 5));
         }
         else if (!game.defderSelected && game.attackerSelected) {
-            
+
             $("#info").hide();
             game.defenderId = $(this).attr('id');
             $('#' + game.defenderId).insertAfter('#defend');
             game.displayDefenderValue = $(this).find('p').attr('id');
-            game.nameOfDefender=$(this).find('h5').html();
-            
+            game.nameOfDefender = $(this).find('h5').html();
+
             $('#' + game.defenderId).css({ "background-color": "black", "color": "white", "border": "3px solid green" })
             game.defnderHp = value;
             game.defendingPower = (Math.floor(Math.random() * ((40 - 5) + 1) + 5));
@@ -81,13 +84,22 @@ $(document).ready(function () {
     });
 
     $('#attack').on('click', function () {
-        if (game.defderSelected) {
+        if (game.defnderCount > 0) {
+            if (game.defderSelected) {
 
-            game.attack();
+                game.attack();
+            }
+            else {
+                $("#info").html("You didn't select a defnder !");
+
+            }
         }
-        else {
-            $("#info").html("You didn't select a defnder !");
-
+        else{
+            $("#info").show();
+           $("#info").html("Congratulations !!!! you won  !!!");
+          $("#info").css({ "background-color": "#7fa4e0", "width": "40%" });
+          var audio = $("#audio")[1];
+            audio.play();
         }
 
     });
