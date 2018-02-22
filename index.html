@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Lobster|Open+Sans|Permanent+Marker" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="assets/javascript/game.js"> </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+
+    <title>Star war game</title>
+</head>
+<audio controls preload="auto" id="audio">
+        <source src="assets/audio/button-3.mp3" ></source>
+     </audio>
+    
+<body class="body">
+    <div class="container">
+        Your Character
+        <div class="row">
+            <div class="your-character">
+
+            </div>
+        </div>
+        Enemies Available To Attack
+        <div class="row" id="images">
+            <div id="first-image" class="img-holder" value="100">
+                <h5>Obi-wan Kenobi
+                    <h5>
+                        <img src="assets/images/images1.jpeg" alt="" />
+                        <p id="first-image-display-value">100</p>
+            </div>
+            <div id="second-image" class="img-holder" value="188">
+                <h5>Luke Skywalker
+                    <h5>
+                        <img src="assets/images/images2.jpeg" alt="" />
+                        <p id="second-image-display-value">188</p>
+            </div>
+            <div id="thred-image" class="img-holder" value="150">
+                <h5>Darth Mall
+                    <h5>
+                        <img src="assets/images/images3.jpeg" alt="" />
+                        <p id="thred-image-display-value">150</p>
+            </div>
+            <div id="forth-image" class="img-holder" value="120">
+                <h5>Darth Sidious
+                    <h5>
+                        <img src="assets/images/images4.jpeg" alt="" />
+                        <p id="forth-image-display-value">120</p>
+            </div>
+        </div>
+        Fight Section
+        <div>
+            <button id="attack">Attack</button>
+        </div>
+        Defender
+        <div id="defend" class="row">
+        </div>
+        <div>
+            <button id="reset">Restart</button>
+        </div>
+        <p id="info"></p>
+        <p id="attacker-info"></p>
+        <p id="defnder-info"></p>
+
+
+    </div>
+</body>
+
+</html>
